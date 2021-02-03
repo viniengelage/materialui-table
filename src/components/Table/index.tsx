@@ -68,7 +68,6 @@ const TableComponent: React.FC<TableProps> = ({
 
   return (
     <ThemeProvider theme={theme}>
-
     <TableContainer {...getTableProps()}>
       <TableHead>
         {headerGroups.map((headerGroup) => (

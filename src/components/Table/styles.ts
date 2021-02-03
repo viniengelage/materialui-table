@@ -21,6 +21,7 @@ export const TableContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 20px 0;
 `;
 
 export const TableHead = styled.div`
@@ -44,6 +45,7 @@ export const TableBody = styled.div`
 
 export const TableTopRow = styled.div`
   width: 100%;
+  display: flex;
 `;
 
 export const TableBodyRow = styled.div`
@@ -59,7 +61,7 @@ export const TableCell = styled.div<TableProps>`
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  background-color: ${(props) => props.theme.colors.lightGray};
+  background-color: ${(props) => props.theme.colors.secundary};
   box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.25);
   position: relative;
   &:first-child {
