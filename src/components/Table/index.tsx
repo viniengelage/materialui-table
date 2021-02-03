@@ -1,5 +1,8 @@
 import React from 'react';
 import { useTable } from 'react-table';
+import { ThemeProvider } from 'styled-components';
+
+import defaultTheme from 'styles/theme'
 
 import {
   TableContainer,
@@ -15,6 +18,12 @@ import {
   AlignContainer,
   DropDownListener,
 } from './styles';
+
+let theme = defaultTheme;
+
+export function addTableTheme(userTheme: any) {
+  return theme = userTheme;
+}
 
 export interface ColumnProps {
   Header: string;
@@ -40,6 +49,7 @@ interface PersonCardProps {
   url: string;
   name: string;
 }
+
 const TableComponent: React.FC<TableProps> = ({
   backgroundColor,
   color,
@@ -57,6 +67,8 @@ const TableComponent: React.FC<TableProps> = ({
   } = useTable({ columns, data });
 
   return (
+    <ThemeProvider theme={theme}>
+
     <TableContainer {...getTableProps()}>
       <TableHead>
         {headerGroups.map((headerGroup) => (
@@ -77,12 +89,12 @@ const TableComponent: React.FC<TableProps> = ({
               <TableBodyRow {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return (
-                      <TableCell
-                        variant={variant}
-                        {...cell.getCellProps()}
-                        color={color}
-                        backgroundColor={backgroundColor}
-                      >
+                    <TableCell
+                    variant={variant}
+                    {...cell.getCellProps()}
+                    color={color}
+                    backgroundColor={backgroundColor}
+                    >
                         <TableCellText>{cell.render('Cell')}</TableCellText>
                       </TableCell>
                   );
@@ -93,6 +105,7 @@ const TableComponent: React.FC<TableProps> = ({
         })}
       </TableBody>
     </TableContainer>
+          </ThemeProvider>
   );
 };
 
